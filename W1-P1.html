@@ -251,7 +251,7 @@ footer a:nth-child(2){
                 <div class="blog-post">
                     <h2 class="blog-post-title">Esempio di blog post</h2>
                     <p class="blog-post-meta">
-                        1 gennaio 2020 di <a onclick="autore()" href="#">Marco</a>
+                        1 gennaio 2020 di <a onclick="autore(this)" href="#">Marco</a>
                     </p>
 
                     <p>
@@ -336,7 +336,7 @@ footer a:nth-child(2){
                 <div class="blog-post">
                     <h2 class="blog-post-title">Ancora un blog post</h2>
                     <p class="blog-post-meta">
-                        23 dicembre 2019 di <a onclick="autore()" href="#">Iacopo</a>
+                        23 dicembre 2019 di <a onclick="autore(this)" href="#">Iacopo</a>
                     </p>
 
                     <p>
@@ -370,7 +370,7 @@ footer a:nth-child(2){
                 <div class="blog-post">
                     <h2 class="blog-post-title">Nuove funzionalità</h2>
                     <p class="blog-post-meta">
-                        14 dicembre 2019 di <a onclick="autore()"  href="#">Christian</a>
+                        14 dicembre 2019 di <a onclick="autore(this)"  href="#">Christian</a>
                     </p>
 
                     <p>
@@ -474,21 +474,24 @@ footer a:nth-child(2){
 
         function removeFirstParent(){
             const element = document.getElementsByClassName("lead mb-0");
-            console.log(element );
-              element.remove("element");
+            for(i=0;i<element.length;i++){
+                console.log(element[i]);
+              element[i].remove();
+            }
+            
         
             
         }
         // EXTRA Crea con JavaScript la funzionalità per creare un alert col nome dell'autore ogni volta che il 
         //cursore passa sopra l'autore del post.
 
-        function autore(){
+        function autore(elemento){
 
-            let autore = document.querySelectorAll(".blog-post-meta a")
+           /* let autore = document.querySelectorAll(".blog-post-meta a")
             console.log(autore)
             for (i=0; i<autore.length;i++){
             alert(autore[i].text);
-        }
+        }*/alert(elemento.innerHTML);
         }
 
     </script>
