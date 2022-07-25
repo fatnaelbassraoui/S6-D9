@@ -80,7 +80,7 @@ ESERCIZIO 5) Crea un selettore per selezionare l'<hr> del primo blog post */
 
 
 
-.blog-post hr:first-of-type{
+.blog-post hr:nth-of-type(1){
     border-width: 2px;
     border-style: groove;
      
@@ -127,7 +127,7 @@ ESERCIZIO 11) Crea un selettore per selezionare il bottone "Nuovi" che trovi in 
 
 /*ESERCIZIO 12) Crea un selettore per selezionare il secondo link del footer
 */
-footer>p a:nth-child(2){
+footer a:nth-child(2){
     background-color: aqua;
 }
 
@@ -186,7 +186,7 @@ footer>p a:nth-child(2){
                     del lettore. Devi riassumere le informazioni decisive per far capire subito l’argomento.
                 </p>
                 <p class="lead mb-0">
-                    <a href="#" class="font-weight-bold">Continua a leggere...</a>
+                    <a href="#" onclick ="removeFirstParent()" class="font-weight-bold">Continua a leggere...</a>
                 </p>
             </div>
         </div>
@@ -203,7 +203,7 @@ footer>p a:nth-child(2){
                             Questo è un elemento più grande che supporta il testo sottostante come naturale introduzione
                             all'informazione successiva.
                         </p>
-                        <a href="#" class="stretched-link">Continua a leggere</a>
+                        <a href="#" onclick ="removeFirstParent()" class="stretched-link">Continua a leggere</a>
                     </div>
                     <div class="col-auto d-none d-lg-block">
                         <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg"
@@ -251,7 +251,7 @@ footer>p a:nth-child(2){
                 <div class="blog-post">
                     <h2 class="blog-post-title">Esempio di blog post</h2>
                     <p class="blog-post-meta">
-                        1 gennaio 2020 di <a href="#">Marco</a>
+                        1 gennaio 2020 di <a onclick="autore()" href="#">Marco</a>
                     </p>
 
                     <p>
@@ -336,7 +336,7 @@ footer>p a:nth-child(2){
                 <div class="blog-post">
                     <h2 class="blog-post-title">Ancora un blog post</h2>
                     <p class="blog-post-meta">
-                        23 dicembre 2019 di <a href="#">Iacopo</a>
+                        23 dicembre 2019 di <a onclick="autore()" href="#">Iacopo</a>
                     </p>
 
                     <p>
@@ -370,7 +370,7 @@ footer>p a:nth-child(2){
                 <div class="blog-post">
                     <h2 class="blog-post-title">Nuove funzionalità</h2>
                     <p class="blog-post-meta">
-                        14 dicembre 2019 di <a href="#">Christian</a>
+                        14 dicembre 2019 di <a onclick="autore()"  href="#">Christian</a>
                     </p>
 
                     <p>
@@ -465,11 +465,31 @@ footer>p a:nth-child(2){
         // EXTRA Crea con JavaScript la funzionalità per rimuovere il link "twitter" sotto alla sezione "Altro" nell'elemento "aside". 
         //Deve avvenire al caricamento della pagina, automticamente.
         window.addEventListener("load", ()=>{
-           let secondLink= document.getElementsByTagName("footer a:nth-child(2)");
-           secondLink.remove();
+           let secondLink= document.querySelector("footer a:last-of-type");
+           let remove=secondLink.remove("a");
+           
         })
-        // EXTRA Crea con JavaScript la funzionalità per rimuovere il corrispondente elemento padre dal DOM cliccando sul link "Continua a leggere".
-        // EXTRA Crea con JavaScript la funzionalità per creare un alert col nome dell'autore ogni volta che il cursore passa sopra l'autore del post.
+        // EXTRA Crea con JavaScript la funzionalità per rimuovere il corrispondente 
+        //elemento padre dal DOM cliccando sul link "Continua a leggere".*/
+
+        function removeFirstParent(){
+            const element = document.getElementsByClassName("lead mb-0");
+            console.log(element );
+              element.remove("element");
+        
+            
+        }
+        // EXTRA Crea con JavaScript la funzionalità per creare un alert col nome dell'autore ogni volta che il 
+        //cursore passa sopra l'autore del post.
+
+        function autore(){
+
+            let autore = document.querySelectorAll(".blog-post-meta a")
+            console.log(autore)
+            for (i=0; i<autore.length;i++){
+            alert(autore[i].text);
+        }
+        }
 
     </script>
 </body>
